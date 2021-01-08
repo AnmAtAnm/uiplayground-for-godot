@@ -1,0 +1,28 @@
+[gd_scene format=2]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+
+[node name="Camera" type="Camera" parent="."]
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.462
+anchor_top = 0.481
+anchor_right = 0.538
+anchor_bottom = 0.519
+margin_left = -0.0880127
+margin_top = -0.100037
+margin_right = 0.0879517
+margin_bottom = 0.0999756
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "PhoneUI"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
