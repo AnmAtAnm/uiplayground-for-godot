@@ -27,6 +27,8 @@ func _onViewportSizeChanged():
 	match OS.screen_orientation:
 		OS.SCREEN_ORIENTATION_LANDSCAPE:
 			newtext += "\nLandscape"
+		OS.SCREEN_ORIENTATION_SENSOR_LANDSCAPE:
+			newtext += "\nSensor Landscape"
 		var orientation:
 			newtext += "\nOrientation: " + str(orientation)
 	text = newtext
