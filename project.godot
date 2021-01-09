@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Object",
+"class": "ConnectTo",
+"language": "GDScript",
+"path": "res://Classes/ConnectTo.gd"
+} ]
 _global_script_class_icons={
-
+"ConnectTo": ""
 }
 
 [application]
@@ -26,6 +31,10 @@ HUD="*res://HUD.tscn"
 [display]
 
 window/handheld/orientation="sensor_landscape"
+
+[gui]
+
+theme/custom_font="res://Fonts/UbuntuCondensed-Regular.tres"
 
 [rendering]
 
