@@ -1,5 +1,6 @@
 # Exported Binaries
 /Binary/**
+/Binaries/**
 
 # Godot-specific ignores
 .import/
