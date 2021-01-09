@@ -1,5 +1,7 @@
 extends Label
 
+export var cycle_orientation_on_click = false
+
 onready var _viewport = get_viewport()
 
 # Called when the node enters the scene tree for the first time.
@@ -10,7 +12,7 @@ func _ready():
 	
 func _gui_input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
+		if cycle_orientation_on_click and event.button_index == BUTTON_LEFT and event.pressed:
 			accept_event()
 			print("------- @" + str(OS.get_unix_time()) + "\nwas: " + str(OS.screen_orientation))
 			OS.screen_orientation = (OS.screen_orientation + 1) % 7
