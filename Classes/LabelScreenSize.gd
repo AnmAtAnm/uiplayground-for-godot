@@ -15,7 +15,7 @@ func _gui_input(event):
 			print("------- @" + str(OS.get_unix_time()) + "\nwas: " + str(OS.screen_orientation))
 			OS.screen_orientation = (OS.screen_orientation + 1) % 7
 			print("now: " + str(OS.screen_orientation))
-			get_tree().connect("idle_frame", self, "_onViewportSizeChanged", [], CONNECT_ONESHOT)
+			ConnectTo.orDie(get_tree(),"idle_frame", self, "_onViewportSizeChanged", [], CONNECT_ONESHOT)
 
 
 func _onViewportSizeChanged():
