@@ -20,7 +20,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "PhoneUI"
+text = "UI Playground"
 align = 1
 valign = 1
 __meta__ = {

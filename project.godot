@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="UI Test"
+config/name="UI Playground"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
