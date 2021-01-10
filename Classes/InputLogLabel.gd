@@ -8,9 +8,9 @@ class LogEntry:
 	var button_index: int
 	var as_string: String
 	
-	func _init(event :InputEvent):
+	func _init(type :String, event :InputEvent):
 		device = event.device
-		as_string = "Device #" + str(device)
+		as_string = type + " #" + str(device)
 	
 var key_entries = []
 var mouse_entries = []
@@ -39,7 +39,7 @@ func _input(event :InputEvent):
 
 func on_action(event :InputEventAction):
 	if event.pressed:
-		var entry = LogEntry.new(event)
+		var entry = LogEntry.new("Action", event)
 		entry.action = event.action
 		entry.as_string += ": Action: " + event.action
 		action_entries.append(entry)
@@ -61,7 +61,7 @@ func on_key(event :InputEventKey):
 				found = true
 				break
 		if not found:
-			var entry = LogEntry.new(event)
+			var entry = LogEntry.new("Keyboard", event)
 			entry.keycode = event.scancode
 			var key_text = (" \"" + char(event.unicode) + "\"") if event.unicode > 0 else ""
 			entry.as_string += ": Key: " + str(event.scancode) + key_text
@@ -77,7 +77,7 @@ func on_key(event :InputEventKey):
 
 func on_joy_button(event :InputEventJoypadButton):
 	if event.pressed:
-		var entry = LogEntry.new(event)
+		var entry = LogEntry.new("Joystick", event)
 		entry.button_index = event.button_index
 		entry.as_string += ": Button #" + str(event.button_index)
 		joy_entries.append(entry)
