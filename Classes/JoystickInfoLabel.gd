@@ -2,6 +2,18 @@ extends Label
 
 const _MAX_DEVICE_ID = 100
 
+class DeviceInfo:
+	var id :int
+	var guid :String
+	var description :String
+	
+	func _init(id):
+		self.id = id
+		self.guid = Input.get_joy_guid(id)
+		self.description = _build_description(id)
+		
+	func _build_description(device_id) -> String:
+		return "Joystick #" + str(device_id) + ": " + Input.get_joy_guid(device_id)
 
 # Array of arrays: The inner array is [device id, guid, device text]
 var _data = []
@@ -12,23 +24,26 @@ func _ready():
 	_rebuild_text()
 	ConnectTo.orDie(Input,"joy_connection_changed", self, "_updateJoystickInfo")
 
+func _input(event :InputEvent):
+	var joy = event as InputEventJoypadButton
+	if joy:
+		var device_id = joy.device
+		var index = _find_index(device_id)
+		if index == -1:
+			_data.append(DeviceInfo.new(device_id))
+			_rebuild_text()
+
 func _initialSearchForDevices():
 	for device_id in _MAX_DEVICE_ID:
 		if Input.is_joy_known(device_id) and not Input.get_joy_guid(device_id).empty():
-			_data.append(_build_device_record(device_id))
-
-func _build_device_text(device_id) -> String:
-	return "Joystick #" + str(device_id) + ": " + Input.get_joy_guid(device_id)
-
-func _build_device_record(device_id: int) -> Array:
-	return [device_id, Input.get_joy_guid(device_id), _build_device_text(device_id)]
+			_data.append(DeviceInfo.new(device_id))
 
 # Find the index for the device_id in _data
 func _find_index(device_id) -> int:
 	var guid = Input.get_joy_guid(device_id)
 	for i in _data.size():
-		var record = _data[i]
-		if record[0] == device_id and record[1] == guid:
+		var info = _data[i]
+		if info.id == device_id and info.guid == guid:
 			return i
 	return -1  # Not Found
 
@@ -39,7 +54,7 @@ func _updateJoystickInfo(device_id :int, connected :bool):
 	if device_id >= 0:
 		var index = _find_index(device_id)
 		if connected and index > -1:
-			_data.insert(index, _build_device_record(device_id))
+			_data.insert(index, DeviceInfo.new(device_id))
 		else:
 			if index != -1:
 				_data.remove(-1)
@@ -50,5 +65,5 @@ func _rebuild_text():
 		text = "No joystick devices."
 	else:
 		text = ""
-		for record in _data:
-			text += ("" if text.empty() else "\n") + record[1]
+		for info in _data:
+			text += ("" if text.empty() else "\n") + info.description
