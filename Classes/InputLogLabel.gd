@@ -12,7 +12,10 @@ class LogEntry:
 		device = event.device
 		as_string = "Device #" + str(device)
 	
-var entries = []
+var key_entries = []
+var mouse_entries = []
+var joy_entries = []
+var action_entries = []
 
 func _ready():
 	set_process_input(true)
@@ -39,21 +42,21 @@ func on_action(event :InputEventAction):
 		var entry = LogEntry.new(event)
 		entry.action = event.action
 		entry.as_string += ": Action: " + event.action
-		entries.append(entry)
+		action_entries.append(entry)
 	else: # Action released
 		var i = 0
-		while i < entries.size():
-			var entry = entries[i]
+		while i < action_entries.size():
+			var entry = action_entries[i]
 			if entry.device == event.device and entry.action == event.action:
-				entries.remove(i)
+				action_entries.remove(i)
 			else:
 				i += 1
 
 func on_key(event :InputEventKey):
 	if event.pressed:
 		var found = false
-		for i in entries.size():
-			var entry = entries[i]
+		for i in key_entries.size():
+			var entry = key_entries[i]
 			if entry.device == event.device and entry.keycode == event.scancode:
 				found = true
 				break
@@ -62,13 +65,13 @@ func on_key(event :InputEventKey):
 			entry.keycode = event.scancode
 			var key_text = (" \"" + char(event.unicode) + "\"") if event.unicode > 0 else ""
 			entry.as_string += ": Key: " + str(event.scancode) + key_text
-			entries.append(entry)
+			key_entries.append(entry)
 	else: # Key released
 		var i = 0
-		while i < entries.size():
-			var entry = entries[i]
+		while i < key_entries.size():
+			var entry = key_entries[i]
 			if entry.device == event.device and  entry.keycode == event.scancode:
-				entries.remove(i)
+				key_entries.remove(i)
 			else:
 				i += 1
 
@@ -77,17 +80,23 @@ func on_joy_button(event :InputEventJoypadButton):
 		var entry = LogEntry.new(event)
 		entry.button_index = event.button_index
 		entry.as_string += ": Button #" + str(event.button_index)
-		entries.append(entry)
+		joy_entries.append(entry)
 	else: # Button released
 		var i = 0
-		while i < entries.size():
-			var entry = entries[i]
+		while i < joy_entries.size():
+			var entry = joy_entries[i]
 			if entry.device == event.device and entry.button_index == event.button_index:
-				entries.remove(i)
+				joy_entries.remove(i)
 			else:
 				i += 1
 
 func rebuild_text():
 	text = ""
-	for entry in entries:
+	for entry in key_entries:
+		text += ("" if text.empty() else "\n") + entry.as_string
+	for entry in mouse_entries:
+		text += ("" if text.empty() else "\n") + entry.as_string
+	for entry in joy_entries:
+		text += ("" if text.empty() else "\n") + entry.as_string
+	for entry in action_entries:
 		text += ("" if text.empty() else "\n") + entry.as_string
