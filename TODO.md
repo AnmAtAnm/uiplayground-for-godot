@@ -1,7 +1,6 @@
 UI Playground ToDos
 ===================
 
- * Put background behind labels that scales with children
  * Joy device id on screen
    * Map buttons to layout and add on-screen indicators
    * On-screen indicators for analog sticks

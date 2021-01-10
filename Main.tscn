@@ -20,30 +20,26 @@ __meta__ = {
 font = ExtResource( 1 )
 font_size_points = 8.0
 
-[node name="Panel" type="Panel" parent="DpiScaledDefaultFont"]
+[node name="PanelContainer" type="PanelContainer" parent="DpiScaledDefaultFont"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -56.0
-margin_top = -11.5
-margin_right = 56.0
-margin_bottom = 11.5
+margin_left = -48.5
+margin_top = -16.5
+margin_right = 48.5
+margin_bottom = 16.5
 grow_horizontal = 2
 grow_vertical = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="DpiScaledDefaultFont/Panel"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -41.5
-margin_top = -9.5
-margin_right = 41.5
-margin_bottom = 9.5
+[node name="Label" type="Label" parent="DpiScaledDefaultFont/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 90.0
+margin_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 1 )
