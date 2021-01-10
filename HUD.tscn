@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Classes/LabelScreenSize.gd" type="Script" id=2]
+[ext_resource path="res://Classes/JoystickInfoLabel.gd" type="Script" id=1]
+[ext_resource path="res://Classes/ScreenSizeInfoLabel.gd" type="Script" id=2]
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -31,13 +32,13 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 101.0
-margin_bottom = 26.0
+margin_right = 99.0
+margin_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="ScreenSizeInfo" type="Label" parent="PanelContainer/VBoxContainer"]
-margin_right = 94.0
+margin_right = 92.0
 margin_bottom = 19.0
 grow_horizontal = 2
 text = "Screen Size Info"
@@ -46,3 +47,9 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="JoystickInfo" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 92.0
+margin_bottom = 42.0
+script = ExtResource( 1 )
