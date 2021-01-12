@@ -1,16 +1,20 @@
 extends Label
 
-
+# Catch-all class for any field used by one of the below logs.
+# Few instances expected, so the mem overhead should be low
+# for the unused fields (if any, I don't know Godot impl).
 class LogEntry:
 	var device: int
 	var action: String
 	var keycode: int
 	var button_index: int
 	var as_string: String
+	var last_update_msec: int
 	
 	func _init(type :String, event :InputEvent):
 		device = event.device
 		as_string = type + " #" + str(device)
+		last_update_msec = OS.get_ticks_msec()
 	
 var key_entries = []
 var mouse_entries = []
@@ -21,6 +25,7 @@ func _ready():
 	set_process_input(true)
 
 func _process(dt):
+	# TODO: Query axis for known joystick
 	pass
 
 func _input(event :InputEvent):
