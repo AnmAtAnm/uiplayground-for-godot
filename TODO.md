@@ -1,7 +1,8 @@
 UI Playground ToDos
 ===================
 
- * Joy device id on screen
+ * PanelContainers that shrink with children
+ * Joysticks
    * Map buttons to layout and add on-screen indicators
    * On-screen indicators for analog sticks
  * Gyro
