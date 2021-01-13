@@ -15,12 +15,12 @@ func _ready():
 			theme.copy_default_theme()  # Fallback
 			var parent = get_parent()
 			while parent:
-				var parent_theme = parent.theme as Theme
-				if parent_theme:
-					theme.copy_theme(parent_theme)
-					break
-				else:
-					parent = parent.get_parent()
+				if parent is Control:
+					var parent_theme = parent.theme as Theme
+					if parent_theme:
+						theme.copy_theme(parent_theme)
+						break
+				parent = parent.get_parent()
 		theme.default_font = font;
 		font.size = floor(dpi * font_size_points / 72)
 	else:

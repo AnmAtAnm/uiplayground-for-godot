@@ -21,11 +21,22 @@ var mouse_entries = []
 var joy_entries = []
 var action_entries = []
 
+
+onready var joy_detector = get_node("/root/JoyDetector")
+
 func _ready():
 	set_process_input(true)
 
 func _process(dt):
-	# TODO: Query axis for known joystick
+	# Query axis for all known joystick
+	for id in joy_detector.device_ids:
+		var lx = Input.get_joy_axis(id, JOY_ANALOG_LX)
+		var ly = Input.get_joy_axis(id, JOY_ANALOG_LY)
+		
+		var rx = Input.get_joy_axis(id, JOY_ANALOG_RX)
+		var ry = Input.get_joy_axis(id, JOY_ANALOG_RY)
+	
+	
 	pass
 
 func _input(event :InputEvent):
@@ -105,3 +116,4 @@ func rebuild_text():
 		text += ("" if text.empty() else "\n") + entry.as_string
 	for entry in action_entries:
 		text += ("" if text.empty() else "\n") + entry.as_string
+	visible = !text.empty()
