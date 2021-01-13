@@ -31,6 +31,7 @@ JoyDetector="*res://Classes/JoyDetector.gd"
 
 [display]
 
+window/dpi/allow_hidpi=true
 window/handheld/orientation="sensor_landscape"
 
 [gui]
