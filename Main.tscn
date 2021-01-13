@@ -1,51 +1,5 @@
-[gd_scene load_steps=4 format=2]
-
-[ext_resource path="res://Fonts/UbuntuCondensed-Regular.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Classes/DpiScaledDefaultFont.gd" type="Script" id=2]
-
-[sub_resource type="Theme" id=1]
+[gd_scene format=2]
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 
 [node name="Camera" type="Camera" parent="."]
-
-[node name="DpiScaledDefaultFont" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = SubResource( 1 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-font = ExtResource( 1 )
-font_size_points = 8.0
-
-[node name="PanelContainer" type="PanelContainer" parent="DpiScaledDefaultFont"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -48.5
-margin_top = -16.5
-margin_right = 48.5
-margin_bottom = 16.5
-grow_horizontal = 2
-grow_vertical = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="DpiScaledDefaultFont/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 90.0
-margin_bottom = 26.0
-grow_horizontal = 2
-grow_vertical = 2
-custom_fonts/font = ExtResource( 1 )
-text = "UI Playground"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
