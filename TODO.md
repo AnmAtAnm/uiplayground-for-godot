@@ -7,9 +7,10 @@ UI Playground ToDos
  * Joysticks
    * Map buttons to layout and add on-screen indicators
    * On-screen indicators for buttons and analog sticks
+   * Add touch (click?) input to onscreen indicators
  * Camera control movement indicator
    * "Dust" particle system
- * Gyro
+ * Gyro (maybe?)
    * Rotate camera so in-game horizon matches real world
  * Implement touch input/control for on-screen analog sticks
  * Automatically configure HUD components for latest input used
